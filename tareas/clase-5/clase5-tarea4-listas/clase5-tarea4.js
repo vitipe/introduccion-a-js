@@ -36,37 +36,25 @@ function calcularNumeroMayor (numerosArray) {
     return numeroMayor
 }
 
-function calcularModa (numerosArray) {
-    let moda = 0;
-      for(let i = 0; i < numerosArray.length; i++){
-        for(let j = 0; j < i; j++){
-           if(numerosArray[j] === numerosArray[i]){
-               moda = numerosArray[j];
-           }
+function calcularModa(numerosArray) {
+    let moda = 1;
+    let contador = 0;
+    let resultadoModa; 
+    for (let i = 0; i < numerosArray.length; i++) {
+        for (let j = i; j < numerosArray.length; j++) {
+            if (numerosArray[i] == numerosArray[j])
+                contador++; 
+            if (moda < contador) {
+                moda = contador;
+                resultadoModa = numerosArray[i];
+            }
         }
-      }
-      return moda;
-} //ACA LA MODA ESTA MAL, si pones 1,1,1,1,2,2 te da 2. Ver hacer algo con este tipo de objetos { a: 12 }
-/* PROBAR CON ESTA DE ACA ABAJO QUE ONDA
-var arr1=[3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]; //array
-var mf = 1; //default maximum frequency
-var m = 0;  //counter
-var item;  //to store item with maximum frequency
-for (var i=0; i<arr1.length; i++)    //select element (current element)
-{
-        for (var j=i; j<arr1.length; j++)   //loop through next elements in array to compare calculate frequency of current element
-        {
-                if (arr1[i] == arr1[j])    //see if element occurs again in the array
-                 m++;   //increment counter if it does
-                if (mf<m)   //compare current items frequency with maximum frequency
-                {
-                  mf=m;      //if m>mf store m in mf for upcoming elements
-                  item = arr1[i];   // store the current element.
-                }
-        }
-        m=0;   // make counter 0 for next element.
+        contador = 0;
+
+    }
+    return resultadoModa;
 }
-*/
+
 
 const $calculoTotal = document.querySelector('#calculo-total');
 
@@ -80,12 +68,12 @@ $calculoTotal.onclick = function(){
     let resultadoPromedio = calcularPromedio(numerosArray);
     let resultadoNumeroMayor = calcularNumeroMayor(numerosArray);
     let resultadoNumeroMenor = calcularNumeroMenor(numerosArray);
-    let resultadoModa = calcularModa(numerosArray);
+    let resultadoDeModa = calcularModa(numerosArray);
     
     document.querySelector('#resultado-promedio').textContent = "El promedio es " + resultadoPromedio;
     document.querySelector('#resultado-minimo').textContent = "El número más pequeño es " + resultadoNumeroMenor;
     document.querySelector('#resultado-mayor').textContent = "El número más grande es " + resultadoNumeroMayor;
-    document.querySelector('#resultado-moda').textContent = "El número más frecuente es " + resultadoModa;
+    document.querySelector('#resultado-moda').textContent = "El número más frecuente es " + resultadoDeModa;
 
     return false;
 }
