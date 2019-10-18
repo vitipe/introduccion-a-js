@@ -40,8 +40,6 @@ $botonAgregar.onclick = function() {
     nuevoTitulo.textContent = "¿Y que edad tienen?";
     formulario.appendChild(nuevoTitulo);
 
-   
-
     for (let i = 1; i<=numeroDeFamiliares; i++) {
         let nuevoLabel = document.createElement("Label");
         nuevoLabel.type = "text"
@@ -65,22 +63,22 @@ $botonAgregar.onclick = function() {
     formulario.appendChild($botonCalcular);
 
 
+    const numerosLista = document.querySelectorAll("li");
+    const numerosArray = [];
+    for(let i = 0; i < numerosLista.length; i++){
+      numerosArray.push(Number(numerosLista[i].textContent));
+    }
+
+
 
     let $botonCalcularAccion = document.querySelector("#boton-calculo");
     $botonCalcularAccion.onclick = function() {
-       let edadesNodeList = Number(document.querySelectorAll('input').value); //ACA ESTA EL PROBLEMA; NO RECIBE VALORES
-       console.log(edadesNodeList);
-       let edadArray = Array.from(edadesNodeList)
-       console.log(edadArray);
-       resultadoEdadMayor = calculoMayorEdad(edadArray);
-       console.log(resultadoEdadMayor);
-       
-       //NO ESTOY PUDIENDO HACER QUE TOME LOS VALORES CON EL QUERYSELECTORALL DE TODOS LOS ELEMENTOS DE ESA CLASE
-       
-        //Crear array
-       //Crear funciones
-       //Return calculos
-       //Agregarlos en los elementos ya creados
+       let edadesNodeList = document.querySelectorAll('.edades-familiares');
+       const edadesArray = [];
+    for(let i = 0; i < edadesNodeList.length; i++){
+      edadesArray.push(Number(edadesNodeList[i].value));
+    }
+    console.log(edadesArray);
         return false;
 
     }
