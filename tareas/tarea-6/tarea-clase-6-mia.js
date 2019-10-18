@@ -6,32 +6,32 @@ Al hacer click en "calcular", mostrar en un elemento pre-existente la mayor edad
 Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuevamente, borrando los inputs ya creados (investigar cómo en MDN).
 */
 
-function calculoMayorEdad(edadArray) {
-    let mayorEdad = 0;
-    for (let i = 0; i < edadArray.length; i++) {
-        if (mayorEdad >= edadArray[i]) {
-            mayorEdad = edadArray[i];
+function calculoMayorEdad(edadesArray) {
+    let resultadoMayor = edadesArray[0]
+    for (let i = 0; i < edadesArray.length; i++) {
+        if (edadesArray[i] > resultadoMayor) {
+            resultadoMayor = edadesArray[i];
         }
     }
-    return mayorEdad;
+    return resultadoMayor;
 }
 
-function calculoMenorEdad(edadArray) {
-    let menorEdad = 0;
-    for (let i = 0; i < edadArray.length; i++) {
-        if (menorEdad <= edadArray[i]) {
-            menorEdad = edadArray[i];
+function calculoMenorEdad(edadesArray) {
+    let resultadoMenor = edadesArray[0];
+    for (let i = 0; i < edadesArray.length; i++) {
+        if (edadesArray[i] < resultadoMenor) {
+            resultadoMenor = edadesArray[i];
         }
     }
-    return menorEdad;
+    return resultadoMenor;
 }
 
-function calculoPromedioFamiliar(edadArray) {
+function calculoPromedioFamiliar(edadesArray) {
     let sumaTotal = 0
-    for (let i = 0; i < edadArray.length; i++) {
-        sumaTotal += edadArray[i];
+    for (let i = 0; i < edadesArray.length; i++) {
+        sumaTotal += edadesArray[i];
     }
-    return sumaTotal / edadArray.length;
+    return sumaTotal / edadesArray.length;
 }
 
 const $botonAgregar = document.querySelector('#boton-agregar');
@@ -46,12 +46,12 @@ $botonAgregar.onclick = function() {
     for (let i = 1; i <= numeroDeFamiliares; i++) {
         let nuevoLabel = document.createElement("Label");
         nuevoLabel.type = "text"
-        nuevoLabel.textContent = "Familiar numero " + i;
+        nuevoLabel.textContent = "Familiar n°" + i + " = ";
 
         let nuevoInput = document.createElement("Input");
         nuevoInput.type = "number"
         nuevoInput.id = "edad-familiar" + i;
-        nuevoInput.class = "edades-familiares";
+        nuevoInput.className = "edades-familiares";
 
         let seleccionForma = document.querySelector('form');
         let div = document.createElement('div');
@@ -60,25 +60,29 @@ $botonAgregar.onclick = function() {
         div.appendChild(nuevoInput);
 
     }
+
     let $botonCalcular = document.createElement('button');
     $botonCalcular.id = "boton-calculo";
     $botonCalcular.textContent = "Calcular";
     formulario.appendChild($botonCalcular);
 
-
-
     let $botonCalcularAccion = document.querySelector("#boton-calculo");
     $botonCalcularAccion.onclick = function() {
-        let edadesNodeList = document.querySelectorAll('.edades-familiares'); // ESTO DE ACA ME DEVUELVE UN LIST VACIO
-        console.log(edadesNodeList);
+        let edadesNodeList = document.querySelectorAll('.edades-familiares');
         const edadesArray = [];
         for (let i = 0; i < edadesNodeList.length; i++) {
             edadesArray.push(Number(edadesNodeList[i].value));
         }
-        console.log(edadesArray);
+        let resultadoMayor = calculoMayorEdad(edadesArray);
+        let resultadoMenor = calculoMenorEdad(edadesArray);
+        let resultadoPromedio = calculoPromedioFamiliar(edadesArray);
+
+        document.querySelector('#mayor-edad').textContent = "La mayor edad del grupo es " + resultadoMayor + " años"
+        document.querySelector('#menor-edad').textContent = "La menor edad del grupo es " + resultadoMenor + " años"
+        document.querySelector('#promedio-edad').textContent = "El promedio de edad del grupo es " + resultadoPromedio + " años"
+
         return false;
 
     }
     return false;
 }
-
