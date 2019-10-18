@@ -69,7 +69,7 @@ $botonAgregar.onclick = function() {
 
     let $botonCalcularAccion = document.querySelector("#boton-calculo");
     $botonCalcularAccion.onclick = function() {
-        let edadesNodeList = document.querySelectorAll('.edades-familiares'); // ESTO DE ACA ME DEVUELVE UN LIST VACIO, QUE ONDA?
+        let edadesNodeList = document.querySelectorAll('.edades-familiares'); // ESTO DE ACA ME DEVUELVE UN LIST VACIO
         console.log(edadesNodeList);
         const edadesArray = [];
         for (let i = 0; i < edadesNodeList.length; i++) {
@@ -81,9 +81,4 @@ $botonAgregar.onclick = function() {
     }
     return false;
 }
-
-//Ahora crear una funcion que arme un array de todos los inputs que se crearon con esa class
-// y calcule lo que tenga que calcular
-//y en el html poner los campos pre-creados que pide aca arriba
-//Y crear otro boton
 
