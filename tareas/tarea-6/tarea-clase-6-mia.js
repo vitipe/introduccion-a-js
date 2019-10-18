@@ -63,17 +63,11 @@ $botonAgregar.onclick = function() {
     formulario.appendChild($botonCalcular);
 
 
-    const numerosLista = document.querySelectorAll("li");
-    const numerosArray = [];
-    for(let i = 0; i < numerosLista.length; i++){
-      numerosArray.push(Number(numerosLista[i].textContent));
-    }
-
-
 
     let $botonCalcularAccion = document.querySelector("#boton-calculo");
     $botonCalcularAccion.onclick = function() {
        let edadesNodeList = document.querySelectorAll('.edades-familiares');
+       console.log(edadesNodeList);
        const edadesArray = [];
     for(let i = 0; i < edadesNodeList.length; i++){
       edadesArray.push(Number(edadesNodeList[i].value));
