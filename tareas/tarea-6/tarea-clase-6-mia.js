@@ -81,7 +81,7 @@ $botonAgregar.onclick = function() {
         }
         let resultadoMayor = calculoMayorEdad(edadesArray);
         let resultadoMenor = calculoMenorEdad(edadesArray);
-        let resultadoPromedio = calculoPromedioFamiliar(edadesArray);
+        let resultadoPromedio = calculoPromedioFamiliar(edadesArray).toFixed(1);
 
         document.querySelector('#mayor-edad').textContent = "La mayor edad del grupo es " + resultadoMayor + " años"
         document.querySelector('#menor-edad').textContent = "La menor edad del grupo es " + resultadoMenor + " años"
