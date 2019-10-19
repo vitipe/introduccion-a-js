@@ -35,12 +35,17 @@ function calculoPromedioFamiliar(edadesArray) {
 }
 
 function resetearForm() {
-    document.querySelector('.formulario-ejemplo').reset();
+    document.querySelector('#formulario').reset();
+}
+
+const $botonResetear = document.querySelector('#boton-resetear');
+
+$botonResetear.onclick = function() {
+    resetearForm();
 }
 
 
 const $botonAgregar = document.querySelector('#boton-agregar');
-
 
 $botonAgregar.onclick = function() {
     const numeroDeFamiliares = Number((document.querySelector('#cantidad-personas').value));
@@ -86,20 +91,8 @@ $botonAgregar.onclick = function() {
         document.querySelector('#mayor-edad').textContent = "La mayor edad del grupo es " + resultadoMayor + " años"
         document.querySelector('#menor-edad').textContent = "La menor edad del grupo es " + resultadoMenor + " años"
         document.querySelector('#promedio-edad').textContent = "El promedio de edad del grupo es " + resultadoPromedio + " años"
-        
-        
-        
-        let $botonResetear = document.createElement('button');
-        $botonResetear.textContent = "Resetear";
-        let ultimoParrafo = document.querySelector('#promedio-edad');
-        ultimoParrafo.appendChild($botonResetear);
-        
-    
-        $botonResetear.onclick = function(){
-            resetearForm();
-        }
-        return false;
 
+        return false;
     }
     return false;
 }
