@@ -36,10 +36,10 @@ function crearNuevosInputs() {
     formulario.appendChild(nuevoInput);
 }
 
-function eliminarInputsCreados () {
+function eliminarInputsCreados () { //Esta funcion borra el primer elemento y no el último
     let selectorLabel = document.querySelector('.labels');
     let selectorInput = document.querySelector('.inputs');
-    selectorLabel.closest('.labels').remove();
+    selectorLabel.closest('.labels').remove(); //Ver de usar "last.child" acá y ver si funciona
     selectorInput.closest('.inputs').remove();
 }
 
@@ -57,9 +57,9 @@ $botonAgregar.onclick = function() {
     return false;
 }
 
-const $botonCalcular = document.querySelector('#$botonCalcular');
+const $botonCalcular = document.querySelector('#boton-calcular');
 $botonCalcular.onclick = function() {
-
+    console.log("Hola")
 }
 
 //Agregar los calculos de los sueldos a las funciones
