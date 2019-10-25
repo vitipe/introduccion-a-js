@@ -114,13 +114,13 @@ $botonAgregar.onclick = function() {
 
 const $botonCalcular = document.querySelector('#boton-calcular');
 $botonCalcular.onclick = function() {
-    //aca adentro crear el array de los inputs que hay
     let salariosNodeList = document.querySelectorAll('.inputs');
     const arraySalarios = [];
     for (let i = 0; i < salariosNodeList.length; i++) {
         arraySalarios.push(Number(salariosNodeList[i].value));
     }
     
+
 
 
     //usar el array con las funciones
