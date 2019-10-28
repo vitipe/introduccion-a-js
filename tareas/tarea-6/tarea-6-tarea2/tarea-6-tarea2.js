@@ -38,12 +38,7 @@ function calcularSalarioAnualPromedio(arraySalarios) {
 }
 
 function calcularSalarioMensualPromedio(arraySalarios) {
-    let contadorSalarios = 0;
-    for (let i = 0; i < arraySalarios.length; i++) {
-        contadorSalarios += arraySalarios[i];
-    }
-    let salarioMensualPromedio = contadorSalarios / 12;
-    return salarioMensualPromedio;
+    return calcularSalarioAnualPromedio() / 12; //Llamando a la función anterior así ahorro código
 }
 
 function crearNuevosInputs() {
@@ -61,44 +56,11 @@ function crearNuevosInputs() {
 }
 
 function eliminarInputsCreados () { //Esta funcion borra el primer elemento y no el último
-    let nodeListInputs = document.querySelectorAll('div');
-    console.log(nodeListInputs);
-   nodeList
+    let formulario = document.querySelector('#formulario');
+    let ultimoDiv = formulario.lastElementChild;
+    formulario.removeChild(ultimoDiv);
 }
 
-//.pop() elimina el ultimo valor de un array. Capaz puedo hacer algo asi:
-/*
-
-1. Crear un <div> por cada label e input y ponerles una clase.
-2. Elegir esa clase con querySelectorAll lo que me va a devolver un nodelist.
-3. Crear un array
-3. Luego usar el .pop() para sacar el ultimo elemento del array.
-4. Esto como se traduce en el html iguaL? solo hago el pop del array y nada más.
-
-//Si no anda, probar usar ese mismo nodelist/array .lastChild() y ver que hace.
-
-
-//ACA COMO CREAR UN ARRAY
-let edadesNodeList = document.querySelectorAll('.edades-familiares');
-        const edadesArray = [];
-        for (let i = 0; i < edadesNodeList.length; i++) {
-            edadesArray.push(Number(edadesNodeList[i].value));
-        }
-
-//ACA FUNCION VIEJA
-function eliminarInputsCreados () { //Esta funcion borra el primer elemento y no el último
-    let selectorLabel = document.querySelector('.labels');
-    let selectorInput = document.querySelector('.inputs');
-    selectorLabel.closest('.labels').remove(); //Ver de usar "last.child" acá y ver si funciona
-    selectorInput.closest('.inputs').remove();
-}
-
-
-*/
-
-
-
-//CHUSMEAR .remove() y empty()
 
 const $botonQuitar = document.querySelector('#boton-quitar');
 $botonQuitar.onclick = function() {
