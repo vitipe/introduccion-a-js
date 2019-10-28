@@ -7,8 +7,6 @@ Punto bonus: si hay inputs vacíos, ignorarlos en el cálculo (no contarlos como
 */
 
 
-//Funciones que van a ser utilizadas:
-
 function calcularMayorSalarioAnual(arraySalarios) {
     let mayorSalario = arraySalarios[0];
     for (let i = 0; i < arraySalarios.length; i++) {
@@ -38,7 +36,12 @@ function calcularSalarioAnualPromedio(arraySalarios) {
 }
 
 function calcularSalarioMensualPromedio(arraySalarios) {
-    return calcularSalarioAnualPromedio() / 12; //Llamando a la función anterior así ahorro código
+    let contadorSalarios = 0;
+    for (let i = 0; i < arraySalarios.length; i++) {
+        contadorSalarios += arraySalarios[i];
+    }
+    let resultado = contadorSalarios / arraySalarios.length;
+    return resultado / 12;
 }
 
 function crearNuevosInputs() {
@@ -55,7 +58,7 @@ function crearNuevosInputs() {
     nuevaDiv.appendChild(nuevoInput);
 }
 
-function eliminarInputsCreados () { //Esta funcion borra el primer elemento y no el último
+function eliminarInputsCreados () {
     let formulario = document.querySelector('#formulario');
     let ultimoDiv = formulario.lastElementChild;
     formulario.removeChild(ultimoDiv);
@@ -75,18 +78,22 @@ $botonAgregar.onclick = function() {
 }
 
 const $botonCalcular = document.querySelector('#boton-calcular');
+
 $botonCalcular.onclick = function() {
     let salariosNodeList = document.querySelectorAll('.inputs');
     const arraySalarios = [];
     for (let i = 0; i < salariosNodeList.length; i++) {
         arraySalarios.push(Number(salariosNodeList[i].value));
     }
-    
+    let resultadoMayor = document.querySelector('#mayor-salario-anual');
+    let resultadoMenor = document.querySelector('#menor-salario-anual');
+    let resultadoAnualPromedio = document.querySelector('#salario-anual-promedio');
+    let resultadoMensualPromedio = document.querySelector('#salario-mensual-promedio');
 
-
-
-    //usar el array con las funciones
-    //adherir los resultadaos a los strong
+    resultadoMayor.textContent = "El mayor salario es " + calcularMayorSalarioAnual(arraySalarios) + " pesos";
+    resultadoMenor.textContent = "El menor salario es " + calcularMenorSalarioAnual(arraySalarios) + " pesos";
+    resultadoAnualPromedio.textContent = "El promedio de salario anual es " + calcularSalarioAnualPromedio(arraySalarios) + " pesos";
+    resultadoMensualPromedio.textContent = "El promedio de salario mensual es " + calcularSalarioMensualPromedio(arraySalarios) + " pesos";
 }
 
 //Agregar los calculos de los sueldos a las funciones
