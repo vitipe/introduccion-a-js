@@ -41,7 +41,7 @@ function calcularSalarioMensualPromedio(arraySalarios) {
         contadorSalarios += arraySalarios[i];
     }
     let resultado = contadorSalarios / arraySalarios.length;
-    return resultado / 12;
+    return (resultado / 12).toFixed(2);
 }
 
 function crearNuevosInputs() {
@@ -64,6 +64,7 @@ function eliminarInputsCreados () {
     formulario.removeChild(ultimoDiv);
 }
 
+//FALTARIA EL BOTON RESETEAR
 
 const $botonQuitar = document.querySelector('#boton-quitar');
 $botonQuitar.onclick = function() {
@@ -83,6 +84,9 @@ $botonCalcular.onclick = function() {
     let salariosNodeList = document.querySelectorAll('.inputs');
     const arraySalarios = [];
     for (let i = 0; i < salariosNodeList.length; i++) {
+        if (salariosNodeList[i].value === ""){
+            continue;
+        }
         arraySalarios.push(Number(salariosNodeList[i].value));
     }
     let resultadoMayor = document.querySelector('#mayor-salario-anual');
@@ -95,7 +99,3 @@ $botonCalcular.onclick = function() {
     resultadoAnualPromedio.textContent = "El promedio de salario anual es " + calcularSalarioAnualPromedio(arraySalarios) + " pesos";
     resultadoMensualPromedio.textContent = "El promedio de salario mensual es " + calcularSalarioMensualPromedio(arraySalarios) + " pesos";
 }
-
-//Agregar los calculos de los sueldos a las funciones
-//Agregar los resultados a los <strong> ya creados
-//Ver como eso de que ignore los input vacios y que no los tome como cero. Algo de un if empty? o no sé.
