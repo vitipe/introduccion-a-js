@@ -5,19 +5,23 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='pruebaCSS.css'>
 </head>
 
 <body>
     <form id='formulario' class="formulario-ejemplo">
     <h1>¿Cuantas personas conforman tu grupo familiar?</h1>
     <input type='number' min=0 id=cantidad-personas></input>
-    <button id=boton-agregar>Agregar</button>
-<div>
-    <p id="mayor-edad"></p>
-    <p id="menor-edad"></p>
-    <p id="promedio-edad"></p>
-</div>
+    <button id='boton-agregar'>Agregar</button>
+    <button id='boton-resetear'>Limpiar</button>
+
 </form>
+<div>
+    <h2 id="mayor-edad"></h2>
+    <h2 id="menor-edad"></h2>
+    <h2 id="promedio-edad"></h2>
+</div>
+
     <script src='tarea-clase-6-mia.js'></script>
 </body>
 </html>
